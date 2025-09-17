@@ -1,62 +1,83 @@
-# SocialMediaApp
+# 🚀 Social Media App
 
-A modern social media application built with Next.js and TypeScript, designed to efficiently handle large datasets and provide a smooth user experience.
+<img width="1920" height="917" alt="localhost_3000_" src="https://github.com/user-attachments/assets/ec1c589c-4375-42a0-857c-03480d71cec9" />
 
-## Technologies & Tools Used
 
-## Styling
-- **Tailwind CSS**: Utility-first CSS framework for rapid UI development and responsive design.
-- **shadcn/ui**: Modern UI components built on top of Radix UI and Tailwind, used for building accessible and customizable interfaces.
+A modern **Social Media App** built with **Next.js** and **TypeScript**, designed to handle large datasets efficiently and deliver a smooth user experience.
 
-## Frontend Framework
-- **Next.js**: React-based framework for server-side rendering, routing, and optimized performance.
-- **TypeScript**: Strongly typed language for better code quality and maintainability.
-
-## State Management & Data Fetching
-- **React Query**: Handles data fetching, caching, and synchronization with the server, improving performance and UX.
-
-## Virtualization & Infinite Scroll
-- **TanStack Virtual**: Efficiently renders only visible items in large lists, reducing DOM load and improving performance.
-- **Custom Infinite Scroll**: Loads more items as the user scrolls, combined with virtualization for smooth UX.
-
-## Routing & Middleware
-- **Next.js Middleware**: Protects routes and handles authentication logic.
-
-## Components & Architecture
-- **shadcn/ui Components**: Used for dropdowns, buttons, cards, skeleton loaders, and more.
-- **Custom Hooks & Context**: For managing global state and reusable logic.
-- **Modular Component Structure**: Organized codebase for scalability and maintainability.
-
-## Solutions to Challenges
-- **Performance with Large Data**: Used virtualization and infinite scroll to render only what's needed.
-- **Slow API Responses**: Leveraged React Query for caching and background updates.
-- **Route Protection**: Implemented middleware for secure access control.
-- **Consistent UI**: Used Tailwind and shadcn/ui for a cohesive, responsive design.
-
-## Challenges Faced
-- **Large Data Sets**: Posts with huge arrays of comments caused performance issues and slow rendering
-- **Slow API Responses**: Waiting for all data to load negatively impacted UX
-- **Efficient Infinite Scroll**: Needed a way to load and render only visible items
-
-## Solutions Implemented
-- **Virtualization with TanStack Virtual**: Only 5 items are rendered in the viewport at a time. As the user scrolls, older items are removed and new ones are added, creating a seamless infinite scroll experience.
-- **React Query Caching**: All data is cached, reducing unnecessary API calls and improving performance.
-- **Infinite Scroll**: Dynamically loads more items as the user scrolls, without overwhelming the DOM.
-- **Middleware for Route Protection**: Ensures only authenticated users can access protected routes.
-
-## Additional Features
-- Modular and reusable components for scalability
-- Context and custom hooks for state management
-- Responsive design and theme toggling
-
-## How to Run
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Start the development server:
-   ```bash
-   npm run dev
-   ```
+👉 **Demo:** [Website](https://sociamedidapp.vercel.app/)
 
 ---
+
+## 🧪 Why This Project?
+
+I wanted to build a **scalable social media app** and solve real-world performance problems:  
+- Handling **large posts** with **200–500 comments each**  
+- Avoiding heavy DOM rendering that slows down the UI  
+- Optimizing **data fetching** and reducing API load  
+- Securing routes with middleware  
+
+The main goal was to combine **TanStack Virtual** + **Infinite Scroll** + **React Query caching** for performance optimization.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 15** – frontend, routing, and middleware  
+- **TypeScript** – type safety and maintainability  
+- **TailwindCSS + ShadCN UI** – modern UI styling and components  
+- **React Query + Axios** – data fetching, caching, and synchronization  
+- **TanStack Virtual** – efficient rendering of large lists  
+- **Context + Custom Hooks** – global state management  
+- **Middleware** – route protection and authentication  
+
+---
+
+## 🧩 Challenges & Highlights
+
+### 📊 Handling Large Data
+- Each post contained **200–500 comments**.  
+- Rendering all comments at once caused **serious performance issues**.  
+- Solved with **TanStack Virtual**, rendering only the visible items in the viewport.  
+
+### ⚡ Slow API Responses
+- API was slow and fetching all data at once was impractical.  
+- Used **React Query caching** to reduce repeated calls and update data in the background.  
+
+### 🔄 Infinite Scroll
+- Combined **virtualization + infinite scroll** to load only what the user needs.  
+- Seamless navigation through large datasets.  
+
+### 🔐 Route Protection
+- Implemented **Next.js Middleware** to secure private routes.  
+
+---
+
+## 🚀 Key Features
+
+- Virtualized list with **TanStack Virtual**  
+- **Infinite scroll** for smooth navigation  
+- **React Query caching** for performance and responsiveness  
+- Modular and reusable components with **shadcn/ui**  
+- Global state with **Context + custom hooks**  
+- **Responsive design** with theme toggling  
+- Middleware for **secure route protection**  
+
+---
+
+## 📂 Folder Structure
+```
+├── 📁 _components/
+│   ├── 📄 ProfileHeader.tsx
+│   └── 📄 ProfilePosts.tsx
+├── 📁 _hooks/
+│   ├── 📄 useProfileData.ts
+│   └── 📄 useUserPosts.ts
+├── 📁 _services/
+│   └── 📄 fetchUserPosts.ts
+└── 📄 page.tsx
+```
+---
+
+Thanks for reading!  
+This project helped me improve my skills in **Next.js architecture**, **data optimization with TanStack Virtual**
