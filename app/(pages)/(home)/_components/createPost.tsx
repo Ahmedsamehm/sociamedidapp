@@ -52,7 +52,7 @@ const CreatePost = () => {
           <CardContent>
             <div className="flex items-center justify-between">
               <AvatarComponent src={"/image.png"} alt={"Post image"} fallBack="A" />
-              <Textarea {...register("body", { required: true })} rows={1} placeholder="What's on your mind?" />
+              <Textarea {...register("body", { required: true })} rows={1} placeholder="What's on your mind?" className="mx-2" />
             </div>
           </CardContent>
 
