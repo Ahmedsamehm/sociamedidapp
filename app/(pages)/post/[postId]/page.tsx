@@ -4,6 +4,7 @@ import React from "react";
 import LeftSide from "./_components/leftSide ";
 import RightSide from "./_components/rightSide";
 import useSinglePost from "./_hooks/useSinglePost";
+import SkeletonComponent from "@/app/components/SkeletonComponent";
 
 const PostId = () => {
   "use memo";

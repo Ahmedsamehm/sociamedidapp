@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import Link from "next/link";
 import usePostComments from "@/app/(pages)/post/[postId]/_hooks/usePostComments";
+import { toast } from "sonner";
 
 export interface InteractionButtonsProps {
   likesCount?: number;
@@ -15,9 +16,10 @@ export interface InteractionButtonsProps {
   showComment?: boolean;
   commentLink?: string;
   className?: string;
+  shareLink?: string;
 }
 
-export function InteractionButtons({ onLike, showShare = true, showComment = true, commentLink, className, commentsCount }: InteractionButtonsProps) {
+export function InteractionButtons({ onLike, showShare = true, showComment = true, commentLink, className, commentsCount, shareLink }: InteractionButtonsProps) {
   const { postComments, isPending } = usePostComments();
   const { total } = postComments;
 
@@ -59,7 +61,15 @@ export function InteractionButtons({ onLike, showShare = true, showComment = tru
         ))}
 
       {showShare && (
-        <Button variant="ghost" size="sm" className="flex items-center space-x-2 text-muted-foreground hover:text-foreground">
+        <Button
+          onClick={() => {
+            navigator.clipboard.writeText(shareLink);
+            toast.success("Link copied!");
+          }}
+          variant="ghost"
+          size="sm"
+          className="flex items-center space-x-2 text-muted-foreground hover:text-foreground"
+        >
           <Share className="size-4" />
           <span className="text-sm">Share</span>
         </Button>

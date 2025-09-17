@@ -37,7 +37,7 @@ export function PostCard({ post, deletePost }: PostProps) {
     setIsLiked(!isLiked);
     setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
   };
-
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
   return (
     <Card className="w-full shadow-md border-2 border-gray-300 rounded-lg  dark:border-border dark:border ">
       <CardHeader>
@@ -69,7 +69,14 @@ export function PostCard({ post, deletePost }: PostProps) {
         )}
 
         <Separator className="my-5" />
-        <InteractionButtons likesCount={likeCount} commentsCount={post?.comments.length || 0} isLiked={isLiked} onLike={handleLike} commentLink={`/post/${post._id}`} />
+        <InteractionButtons
+          likesCount={likeCount}
+          commentsCount={post?.comments.length || 0}
+          isLiked={isLiked}
+          onLike={handleLike}
+          commentLink={`/post/${post._id}`}
+          shareLink={`${baseUrl}/post/${post._id}`}
+        />
         {/* comment section */}
         <Comments post={post} />
         {/* comment section */}
