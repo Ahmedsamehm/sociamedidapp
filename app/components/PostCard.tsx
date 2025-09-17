@@ -15,6 +15,7 @@ import useProfileData from "../(pages)/profile/_hooks/useProfileData";
 
 import Comments from "../(pages)/post/[postId]/_components/rightComponents/commentComponents/Comments";
 import { AspectRatio } from "./shared/aspect-ratio";
+import { baseDomainSite } from "@/lib/config";
 
 export type PostProps = {
   post: Posts;
@@ -37,7 +38,7 @@ export function PostCard({ post, deletePost }: PostProps) {
     setIsLiked(!isLiked);
     setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
   };
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
   return (
     <Card className="w-full shadow-md border-2 border-gray-300 rounded-lg  dark:border-border dark:border ">
       <CardHeader>
@@ -75,7 +76,7 @@ export function PostCard({ post, deletePost }: PostProps) {
           isLiked={isLiked}
           onLike={handleLike}
           commentLink={`/post/${post._id}`}
-          shareLink={`${baseUrl}/post/${post._id}`}
+          shareLink={`${baseDomainSite}/post/${post._id}`}
         />
         {/* comment section */}
         <Comments post={post} />
