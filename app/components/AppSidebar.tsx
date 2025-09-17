@@ -24,11 +24,6 @@ const items = [
     url: "/setting",
     icon: Settings,
   },
-  {
-    title: "test",
-    url: "/test",
-    icon: TestTube,
-  },
 ];
 
 export function AppSidebar() {

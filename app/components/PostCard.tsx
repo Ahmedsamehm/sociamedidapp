@@ -23,12 +23,12 @@ export type PostProps = {
   isPending?: boolean;
   isUpdatePending?: boolean;
 };
-export function PostCard({ post, deletePost, updatePost, isUpdatePending }: PostProps) {
+export function PostCard({ post, deletePost }: PostProps) {
   "use memo";
   const { editState } = useEditContext();
   const [isLiked, setIsLiked] = useState(false);
 
-  const { userProfile, isPending: isProfilePending } = useProfileData();
+  const { userProfile } = useProfileData();
 
   const randomLikes = Math.floor(Math.random() * 1000);
   const [likeCount, setLikeCount] = useState(randomLikes);
