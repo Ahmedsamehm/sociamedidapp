@@ -17,9 +17,10 @@ export interface InteractionButtonsProps {
   commentLink?: string;
   className?: string;
   shareLink?: string;
+  isPending: boolean;
 }
 
-export function InteractionButtons({ onLike, showShare = true, showComment = true, commentLink, className, commentsCount, shareLink }: InteractionButtonsProps) {
+export function InteractionButtons({ onLike, showShare = true, showComment = true, commentLink, className, commentsCount, shareLink, isPending: isLoading }: InteractionButtonsProps) {
   const { postComments, isPending } = usePostComments();
   const { total } = postComments;
 
@@ -40,7 +41,13 @@ export function InteractionButtons({ onLike, showShare = true, showComment = tru
 
   return (
     <div className={cn("flex w-full justify-between p-2 ", className)}>
-      <Button variant="ghost" size="sm" onClick={handleLike} className={cn("flex items-center space-x-2 text-muted-foreground hover:text-foreground", liked && "text-red-500 hover:text-red-600")}>
+      <Button
+        disabled={isLoading || isPending}
+        variant="ghost"
+        size="sm"
+        onClick={handleLike}
+        className={cn("flex items-center space-x-2 text-muted-foreground hover:text-foreground", liked && "text-red-500 hover:text-red-600")}
+      >
         <Heart className={cn("size-4", liked && "fill-current")} />
         <span className="text-sm">{likeCount ?? 0}</span>
       </Button>
@@ -69,6 +76,7 @@ export function InteractionButtons({ onLike, showShare = true, showComment = tru
           variant="ghost"
           size="sm"
           className="flex items-center space-x-2 text-muted-foreground hover:text-foreground"
+          disabled={isLoading || isPending || !shareLink}
         >
           <Share className="size-4" />
           <span className="text-sm">Share</span>

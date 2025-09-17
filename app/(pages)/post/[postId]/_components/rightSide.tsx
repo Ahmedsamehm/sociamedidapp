@@ -12,7 +12,7 @@ import { baseDomainSite } from "@/lib/config";
 
 const RightSide = () => {
   "use memo";
-  const { singlePost } = useSinglePost();
+  const { singlePost, isPending } = useSinglePost();
 
   return (
     <div className="flex flex-col">
@@ -20,7 +20,7 @@ const RightSide = () => {
         {/* Post header */}
         <HeaderPost />
         {/* Interaction buttons */}
-        <InteractionButtons shareLink={`${baseDomainSite}/post/${singlePost._id}`} />
+        <InteractionButtons shareLink={`${baseDomainSite}/post/${singlePost._id}`} isPending={isPending} />
         {/* Comments section - scrollable */}
         <CardContent className="flex-1 p-0">
           <CommentsSection />
