@@ -1,0 +1,41 @@
+{
+  "signup": {
+    "Labels": ["name", "email", "password", "rePassword", "dateOfBirth", "gender"],
+    "types": ["text", "email", "password", "password", "date", "select"],
+    "placeholder": ["Enter your name", "Enter your email", "Enter your password", "Re-enter your password", "Enter your date of birth", "Select your gender"],
+    "gender": ["male", "female", "other"],
+    "message": " you have an account ?",
+    "href": "signin",
+    "Name": "Sign up",
+    "title": "Create an account",
+    "description": "Enter your details below to create your account",
+    "validationSchema": {
+      "password": {
+        "required": "password is required",
+        "minLength": {
+          "value": 6,
+          "message": "password must be at least 6 characters"
+        }
+      }
+    }
+  },
+  "signin": {
+    "Labels": ["email", "password"],
+    "types": ["email", "password"],
+    "placeholder": ["Enter your email", "Enter your password"],
+    "message": " Don't have an account ?",
+    "href": "signup",
+    "Name": "Sign in",
+    "title": "Sign in to your account",
+    "description": "Enter your details below to sign in",
+    "validationSchema": {
+      "password": {
+        "required": "password is required",
+        "minLength": {
+          "value": 6,
+          "message": "password must be at least 6 characters"
+        }
+      }
+    }
+  }
+}

@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SocialMediaApp
 
-## Getting Started
+A modern social media application built with Next.js and TypeScript, designed to efficiently handle large datasets and provide a smooth user experience.
 
-First, run the development server:
+## Technologies & Tools Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Styling
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development and responsive design.
+- **shadcn/ui**: Modern UI components built on top of Radix UI and Tailwind, used for building accessible and customizable interfaces.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Frontend Framework
+- **Next.js**: React-based framework for server-side rendering, routing, and optimized performance.
+- **TypeScript**: Strongly typed language for better code quality and maintainability.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## State Management & Data Fetching
+- **React Query**: Handles data fetching, caching, and synchronization with the server, improving performance and UX.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Virtualization & Infinite Scroll
+- **TanStack Virtual**: Efficiently renders only visible items in large lists, reducing DOM load and improving performance.
+- **Custom Infinite Scroll**: Loads more items as the user scrolls, combined with virtualization for smooth UX.
 
-## Learn More
+## Routing & Middleware
+- **Next.js Middleware**: Protects routes and handles authentication logic.
 
-To learn more about Next.js, take a look at the following resources:
+## Components & Architecture
+- **shadcn/ui Components**: Used for dropdowns, buttons, cards, skeleton loaders, and more.
+- **Custom Hooks & Context**: For managing global state and reusable logic.
+- **Modular Component Structure**: Organized codebase for scalability and maintainability.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Solutions to Challenges
+- **Performance with Large Data**: Used virtualization and infinite scroll to render only what's needed.
+- **Slow API Responses**: Leveraged React Query for caching and background updates.
+- **Route Protection**: Implemented middleware for secure access control.
+- **Consistent UI**: Used Tailwind and shadcn/ui for a cohesive, responsive design.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Challenges Faced
+- **Large Data Sets**: Posts with huge arrays of comments caused performance issues and slow rendering
+- **Slow API Responses**: Waiting for all data to load negatively impacted UX
+- **Efficient Infinite Scroll**: Needed a way to load and render only visible items
 
-## Deploy on Vercel
+## Solutions Implemented
+- **Virtualization with TanStack Virtual**: Only 5 items are rendered in the viewport at a time. As the user scrolls, older items are removed and new ones are added, creating a seamless infinite scroll experience.
+- **React Query Caching**: All data is cached, reducing unnecessary API calls and improving performance.
+- **Infinite Scroll**: Dynamically loads more items as the user scrolls, without overwhelming the DOM.
+- **Middleware for Route Protection**: Ensures only authenticated users can access protected routes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Additional Features
+- Modular and reusable components for scalability
+- Context and custom hooks for state management
+- Responsive design and theme toggling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## How to Run
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---

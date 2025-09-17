@@ -1,7 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    reactCompiler: {
+      compilationMode: "annotation",
+    },
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "linked-posts.routemisr.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
