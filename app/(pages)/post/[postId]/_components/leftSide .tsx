@@ -15,7 +15,7 @@ const LeftSide = () => {
         <SkeletonComponent hight="60vh" />
       ) : (
         <AspectRatio ratio={6 / 6} className="rounded-lg overflow-hidden size-full">
-          <Image src={singlePost.image} alt={singlePost.title || "Post image"} className="size-full object-cover" objectFit="cover" objectPosition="center" width={500} height={500} />
+          <Image src={singlePost.image} alt={singlePost.title || "Post image"} className="size-full object-cover" objectFit="cover" objectPosition="center" width={1000} height={900} />
         </AspectRatio>
       )}
     </>
