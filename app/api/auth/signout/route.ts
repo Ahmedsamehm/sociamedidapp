@@ -1,4 +1,3 @@
-import { AxiosError } from "axios";
 import { NextResponse } from "next/server";
 
 export const DELETE = async () => {
@@ -8,13 +7,12 @@ export const DELETE = async () => {
     response.cookies.delete("token");
     response.cookies.delete("userId");
     return response;
-  } catch (error) {
-    const axiosError = error as AxiosError;
+  } catch (error: any) {
     return NextResponse.json(
       {
-        details: axiosError.message || "something went wrong",
+        details: error.message || "something went wrong",
       },
-      { status: axiosError?.response?.status || 500 }
+      { status: 500 },
     );
   }
 };

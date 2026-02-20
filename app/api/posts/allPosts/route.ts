@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/lib/config";
+import axios, { AxiosError } from "axios";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -11,18 +12,17 @@ export const GET = async (req: Request) => {
   const token = cookieStore.get("token")?.value || "";
 
   try {
-    const res = await fetch(`${BASE_URL}/posts?limit=${limit}&page=${page}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json", token },
+    const response = await axios.get(`${BASE_URL}/posts`, {
+      params: { limit, page },
+      headers: { token },
     });
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch posts");
+    return NextResponse.json(response.data, { status: 200 });
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      return NextResponse.json({ message: axiosError.response?.data || "Error fetching posts" }, { status: axiosError.response?.status || 500 });
     }
-
-    const data = await res.json();
-    return NextResponse.json(data, { status: 200 });
-  } catch (error) {
     return NextResponse.json({ message: "Error fetching posts" }, { status: 500 });
   }
 };

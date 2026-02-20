@@ -25,7 +25,22 @@ type FormProps = {
   ErrorMessage?: string;
 };
 export function LoginForm({ ...props }: FormProps) {
-  const { className, Labels, placeholder, message, href, gender, Name, title, description, types, validationSchema, handleAuth, ErrorMessage, isPending } = props;
+  const {
+    className,
+    Labels,
+    placeholder,
+    message,
+    href,
+    gender,
+    Name,
+    title,
+    description,
+    types,
+    validationSchema,
+    handleAuth,
+    ErrorMessage,
+    isPending,
+  } = props;
   const {
     control,
     register,
@@ -76,8 +91,8 @@ export function LoginForm({ ...props }: FormProps) {
                       <Input
                         id={label}
                         type={types?.[index] || "text"}
-                        // If the field is "password", use the validation rule from the schema
-                        {...register(label, label === "password" ? validationSchema?.password : {})}
+                        // Apply validation rules if they exist in the schema for this label
+                        {...register(label, validationSchema?.[label] || {})}
                         placeholder={placeholder?.[index] || ""}
                         required
                       />

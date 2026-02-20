@@ -11,10 +11,12 @@ const useSignUp = () => {
     isPending,
     isError,
     error,
-  } = useMutation<{ data: any }, Error, { body: signupBody }>({
+  } = useMutation<{ data: any }, Error, signupBody>({
     mutationKey: ["signup"],
     mutationFn: (body: signupBody) => {
-      return signupService({ body });
+      console.log(body);
+
+      return signupService(body);
     },
     onSuccess() {
       router.push("/signin");

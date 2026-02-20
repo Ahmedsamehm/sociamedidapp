@@ -1,28 +1,31 @@
-import { AxiosError } from "axios";
 import { BASE_URL } from "@/lib/config";
+import axios, { AxiosError } from "axios";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export const PUT = async (res: Response) => {
-  const body = await res.json();
-  const content = body.content;
-  const commentId = body.commentId;
-  const cookieStore = await cookies();
-  const token = cookieStore.get("token")?.value || "";
-
+export const PUT = async (req: Request) => {
   try {
-    const res = await fetch(`${BASE_URL}/comments/${commentId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token,
+    const body = await req.json();
+    const { content, commentId } = body;
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value || "";
+
+    const response = await axios.put(
+      `${BASE_URL}/comments/${commentId}`,
+      { content },
+      {
+        headers: {
+          token,
+        },
       },
-      body: JSON.stringify({ content }),
-    });
-    const data = await res.json();
-    return NextResponse.json(data, { status: 200 });
-  } catch (error) {
-    const axiosError = error as AxiosError;
-    return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
+    );
+
+    return NextResponse.json(response.data, { status: 200 });
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      return NextResponse.json({ message: "Something went wrong", error: axiosError.response?.data }, { status: axiosError.response?.status || 500 });
+    }
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 };

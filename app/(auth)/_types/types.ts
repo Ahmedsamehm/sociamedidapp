@@ -3,8 +3,7 @@ export interface signupBody {
   email: string;
   password: string;
   rePassword: string;
-  dateOfBirth: string;
-  gender: string;
+  phone: string;
 }
 
 export interface Login {

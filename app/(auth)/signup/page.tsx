@@ -4,7 +4,7 @@ import SignupFormClient from "./_components/SignupFormClient";
 
 const Signup = () => {
   const signupLabels = labelsForm.signup;
-  const { Labels, placeholder, message, href, gender, Name, title, description, types, validationSchema } = signupLabels;
+  const { Labels, placeholder, message, href, Name, title, description, types, validationSchema } = signupLabels;
 
   return (
     <SignupFormClient
@@ -12,7 +12,6 @@ const Signup = () => {
       placeholder={placeholder}
       message={message}
       href={href}
-      gender={gender}
       Name={Name}
       title={title}
       description={description}

@@ -1,20 +1,36 @@
 {
   "signup": {
-    "Labels": ["name", "email", "password", "rePassword", "dateOfBirth", "gender"],
-    "types": ["text", "email", "password", "password", "date", "select"],
-    "placeholder": ["Enter your name", "Enter your email", "Enter your password", "Re-enter your password", "Enter your date of birth", "Select your gender"],
-    "gender": ["male", "female", "other"],
+    "Labels": ["name", "email", "password", "rePassword", "phone"],
+    "types": ["text", "email", "password", "password", "tel"],
+    "placeholder": ["Enter your name", "Enter your email", "Enter your password", "Re-enter your password", "Enter your phone number"],
     "message": " you have an account ?",
     "href": "signin",
     "Name": "Sign up",
     "title": "Create an account",
     "description": "Enter your details below to create your account",
     "validationSchema": {
+      "email": {
+        "required": "email is required",
+        "pattern": {
+          "value": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+          "message": "Enter a valid email address"
+        }
+      },
       "password": {
         "required": "password is required",
         "minLength": {
           "value": 6,
           "message": "password must be at least 6 characters"
+        }
+      },
+      "rePassword": {
+        "required": "confirm password is required"
+      },
+      "phone": {
+        "required": "phone is required",
+        "pattern": {
+          "value": "^01[0125][0-9]{8}$",
+          "message": "Enter a valid Egyptian phone number (11 digits starting with 01)"
         }
       }
     }
